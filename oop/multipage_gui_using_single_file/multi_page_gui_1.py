@@ -1,6 +1,6 @@
 import tkinter as tk
 
-class Multipage_App(): # create Multipage_App class
+class Multipage_App: # create Multipage_App class
     def __init__(self): # __init__ function is called as soon as we made object of class
         root.title('Multiple Frames')  # this sets title of window
         root.geometry('800x500')  # this sets size of window
@@ -26,7 +26,9 @@ class Multipage_App(): # create Multipage_App class
         self.f1.tkraise()
     def open_frame_2(self):
         self.f2.tkraise()
-class Frame1():
+
+
+class Frame1:
     def __init__(self): # __init__ function is called as soon as we made object of class
         self.frame = tk.Frame(root, bg="red")  # this creates frame
         self.frame.place(x=0, y=0, relwidth=1, relheight=1)  # this adds frame to window at x=0 and y=0 and then make it acquire full height and width
@@ -36,7 +38,8 @@ class Frame1():
     def get_frame(self): # this function returns frame
         return self.frame
 
-class Frame2():
+
+class Frame2:
     def __init__(self):
         self.frame=tk.Frame(root, bg="green")  # this creates frame
         self.frame.place(x=0, y=0, relwidth=1, relheight=1)  # this adds frame to window at x=0 and y=0 and then make it acquire full height and width
