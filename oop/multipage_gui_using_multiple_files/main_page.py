@@ -1,7 +1,9 @@
 import tkinter as tk
 from frame1 import Frame1
 from frame2 import Frame2
-class Multipage_App(): # create Multipage_App class
+
+
+class Multipage_App: # create Multipage_App class
     def __init__(self): # __init__ function is called as soon as we made object of class
         self.root = tk.Tk()  # this creates object of Tk class
         self.root.title('Multiple Frames')  # this sets title of window
