@@ -10,40 +10,39 @@ class App:
 
         # code to create menu below
         self.menu_bar = tk.Menu(self.root)  # this creates menu
-        self.menu_bar.add_command(label="Main", command=lambda: self.open_frame(self.main_frame))  # this adds menu item
-        self.menu_bar.add_command(label="Insert", command=lambda: self.open_frame(self.second_frame))  # this add menu item
-        self.menu_bar.add_command(label="View", command=lambda:self.open_frame(self.third_frame))  # this adds menu item
+        self.menu_bar.add_command(label="Main", command=self.open_main_frame)  # this adds menu item
+        self.menu_bar.add_command(label="Insert", command=self.open_second_frame)  # this add menu item
+        self.menu_bar.add_command(label="View", command=self.open_third_frame)  # this adds menu item
         self.root.config(menu=self.menu_bar)  # this adds menu to window
         # code to create menu above
 
-        self.frames_dictionary = {} # this sets dictionary of frames which is sent to all frame classes so that even frame classes have function to switch frames
+        self.objects_dictionary = {} # this sets dictionary of objects which is sent to all frame classes so that every frame class can use functions of other frame classes
 
         self.main_frame_obj = MainFrame(self.root)  # this creates object of MainFrame class
-        self.main_frame = self.main_frame_obj.get_frame() # this gets frame so that it can be used in open_frame function
-        self.frames_dictionary["main_frame"] = self.main_frame # this fills frames dictionary
+        self.objects_dictionary["main_frame_obj"] = self.main_frame_obj # this fills objects dictionary
 
         self.second_frame_obj = SecondFrame(self.root)  # this creates object of SecondFrame class
-        self.second_frame = self.second_frame_obj.get_frame() # this gets frame so that it can be used in open_frame function
-        self.frames_dictionary["insert_frame"] = self.second_frame # this fills frames dictionary
+        self.objects_dictionary["second_frame_obj"] = self.second_frame_obj # this fills objects dictionary
 
         self.third_frame_obj = ThirdFrame(self.root)  # this creates object of ThirdFrame class
-        self.third_frame = self.third_frame_obj.get_frame() # this gets frame so that it can be used in open_frame function
-        self.frames_dictionary["view_frame"] = self.third_frame # this fills frames dictionary
+        self.objects_dictionary["third_frame_obj"] = self.third_frame_obj # this fills objects dictionary
 
-        self.main_frame_obj.set_frames_dictionary(self.frames_dictionary) # this sets frame dictionary for objects of frames
-        self.second_frame_obj.set_frames_dictionary(self.frames_dictionary) # this sets frame dictionary for objects of frames
-        self.third_frame_obj.set_frames_dictionary(self.frames_dictionary) # this sets frame dictionary for objects of frames
+        self.main_frame_obj.set_objects_dictionary(self.objects_dictionary) # this sets objects dictionary of MainFrame class
+        self.second_frame_obj.set_objects_dictionary(self.objects_dictionary) # this sets objects dictionary of SecondFrame class
+        self.third_frame_obj.set_objects_dictionary(self.objects_dictionary) # # this sets objects dictionary of ThirdFrame class
 
-        self.open_frame(self.main_frame) # this opens main_frame in beginning
+        self.open_main_frame() # this opens main_frame in beginning
 
         self.root.mainloop()
 
-    @staticmethod
-    def open_frame(frame):
-        frame.tkraise()
+    def open_main_frame(self):
+        self.main_frame_obj.get_frame().tkraise()
 
-    def get_main_frame(self):
-        return self.main_frame
+    def open_second_frame(self):
+        self.second_frame_obj.get_frame().tkraise()
+
+    def open_third_frame(self):
+        self.third_frame_obj.get_frame().tkraise()
 
 
 app = App()
