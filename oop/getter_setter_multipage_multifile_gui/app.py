@@ -30,10 +30,10 @@ class App:
 
         self.root.mainloop()
 
-    def open_first_frame(self):
+    def open_first_frame(self):  # this opens first frame
         self.first_frame_obj.get_frame().tkraise()
 
-    def open_second_frame(self):
+    def open_second_frame(self):  # this opens second frame
         self.second_frame_obj.get_frame().tkraise()
 
 
